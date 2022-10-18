@@ -14,19 +14,67 @@
 [[yes-&gt;yes-should we invest in SaaS Replacement?]]
 
 [[no-&gt;no-is the current application COTS?]]
-</tw-passagedata><tw-passagedata pid="2" name="cloud decision - RE-EVALUATE" tags="" position="425,1150" size="100,100">Cloud Decision: 
+</tw-passagedata><tw-passagedata pid="2" name="cloud decision - RE-EVALUATE" tags="" position="425,1150" size="100,100">Workload Assessment Responses:
+&lt;ol id=&quot;workload-decision-points&quot;&gt;&lt;/ol&gt;
+
+Cloud Decision: 
 
 Re-evaluate if workload qualifies to be &quot;migrated&quot;.
  
  [[click here to restart TIME analysis-&gt;TIME analysis]]
- </tw-passagedata><tw-passagedata pid="3" name="TIME analysis" tags="" position="675,300" size="100,100">&lt;div style=&#39;border:1px solid white;width:200px;height:200px;float:left;text-align:center;padding-top:80px;&#39;&gt;[[tolerate]]&lt;/div&gt;&lt;div style=&#39;border:1px solid white;width:200px;height:200px;float:left;text-align:center;padding-top:80px;&#39;&gt;[[invest]]&lt;/div&gt;
+
+&lt;script&gt;
+console.log($decisionTree);
+
+$decisionTree.forEach(decisionNode =&gt; {
+
+	console.log(&quot;loop -&gt; &quot; + decisionNode.title);
+    
+	$(&quot;#workload-decision-points&quot;).append($(&quot;&lt;li&gt;&quot;).html(decisionNode.title + &quot; &lt;br/&gt; your reponse: &quot; + decisionNode.response));
+});
+
+
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="3" name="TIME analysis" tags="" position="675,300" size="100,100">&lt;div style=&#39;border:1px solid white;width:200px;height:200px;float:left;text-align:center;padding-top:80px;&#39;&gt;[[tolerate]]&lt;/div&gt;&lt;div style=&#39;border:1px solid white;width:200px;height:200px;float:left;text-align:center;padding-top:80px;&#39;&gt;[[invest]]&lt;/div&gt;
 &lt;div style=&#39;border:1px solid white;width:200px;height:200px;float:left;clear:left;text-align:center;padding-top:80px;&#39;&gt;[[eliminate]]&lt;/div&gt;
-&lt;div style=&#39;border:1px solid white;width:200px;height:200px;float:left;text-align:center;padding-top:80px;&#39;&gt;[[Migrate-&gt;migrate]]&lt;/div&gt;</tw-passagedata><tw-passagedata pid="4" name="invest" tags="" position="400,500" size="100,100"></tw-passagedata><tw-passagedata pid="5" name="tolerate" tags="" position="200,500" size="100,100"></tw-passagedata><tw-passagedata pid="6" name="eliminate" tags="" position="1100,500" size="100,100"></tw-passagedata><tw-passagedata pid="7" name="migrate" tags="" position="725,475" size="100,100">Does the workload qualify to be &quot;migrated&quot; based on business fitness and technical fitness scores, and you have ruled out &quot;retain&quot; and &quot;retire&quot; options?
+&lt;div style=&#39;border:1px solid white;width:200px;height:200px;float:left;text-align:center;padding-top:80px;&#39; id=&quot;migrate&quot;&gt;[[Migrate-&gt;migrate]]&lt;/div&gt;
 
-[[yes-&gt;is there a SaaS that does what we need?]] 
+&lt;!--(set:$decisiontree to [])--&gt;
 
-[[no-&gt;cloud decision - RE-EVALUATE]]
-</tw-passagedata><tw-passagedata pid="8" name="yes-should we invest in SaaS Replacement?" tags="" position="650,800" size="100,100">Should we invest in SaaS Replacement?
+&lt;script&gt;
+
+$decisionTree = [];
+
+$(&quot;#migrate&quot;).click(function () {
+	var decisionNode = {
+    	title:&quot;TIME Analysis&quot;,
+        response:&quot;MIGRATE&quot;
+    };
+    $decisionTree.push(decisionNode);
+});
+
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="4" name="invest" tags="" position="400,500" size="100,100"></tw-passagedata><tw-passagedata pid="5" name="tolerate" tags="" position="200,500" size="100,100"></tw-passagedata><tw-passagedata pid="6" name="eliminate" tags="" position="1100,500" size="100,100"></tw-passagedata><tw-passagedata pid="7" name="migrate" tags="" position="725,475" size="100,100">&lt;span id=&quot;title&quot;&gt;&lt;/span&gt;
+
+&lt;span id=&quot;yes&quot;&gt;[[yes-&gt;is there a SaaS that does what we need?]]&lt;/span&gt;
+
+&lt;span id=&quot;no&quot;&gt;[[no-&gt;cloud decision - RE-EVALUATE]]&lt;/span&gt;
+
+&lt;script&gt;
+
+var decisionNode = {
+    	title:&#39;Does the workload qualify to be &quot;migrated&quot; based on business fitness and technical fitness scores, and you have ruled out &quot;retain&quot; and &quot;retire&quot; options?&#39;,
+        response:&quot;yes&quot;
+};
+
+console.log($decisionTree[0].title);
+
+$(&quot;#title&quot;).text(decisionNode.title);
+
+$(&quot;#no&quot;).click(function () {
+	decisionNode.response=&quot;no&quot;;
+	$decisionTree.push(decisionNode);
+});
+
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="8" name="yes-should we invest in SaaS Replacement?" tags="" position="650,800" size="100,100">Should we invest in SaaS Replacement?
 
 [[yes-&gt;cloud decision - REPLACE]]
 
