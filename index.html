@@ -28,9 +28,9 @@ console.log($decisionTree);
 
 $decisionTree.forEach(decisionNode =&gt; {
 
-	console.log(&quot;loop -&gt; &quot; + decisionNode.title);
+	//console.log(&quot;loop -&gt; &quot; + decisionNode.title);
     
-	$(&quot;#workload-decision-points&quot;).append($(&quot;&lt;li&gt;&quot;).html(decisionNode.title + &quot; &lt;br/&gt; your reponse: &quot; + decisionNode.response));
+	$(&#39;#workload-decision-points&#39;).append($(&#39;&lt;li&gt;&#39;).html(decisionNode.title + &#39; &lt;br/&gt; your reponse: &#39; + decisionNode.response));
 });
 
 
@@ -44,10 +44,10 @@ $decisionTree.forEach(decisionNode =&gt; {
 
 $decisionTree = [];
 
-$(&quot;#migrate&quot;).click(function () {
+$(&#39;#migrate&#39;).click(function () {
 	var decisionNode = {
-    	title:&quot;TIME Analysis&quot;,
-        response:&quot;MIGRATE&quot;
+    	title:&#39;TIME Analysis&#39;,
+        response:&#39;MIGRATE&#39;
     };
     $decisionTree.push(decisionNode);
 });
@@ -67,9 +67,9 @@ var decisionNode = {
 
 console.log($decisionTree[0].title);
 
-$(&quot;#title&quot;).text(decisionNode.title);
+$(&#39;#title&#39;).text(decisionNode.title);
 
-$(&quot;#no&quot;).click(function () {
+$(&#39;#no&#39;).click(function () {
 	decisionNode.response=&quot;no&quot;;
 	$decisionTree.push(decisionNode);
 });
